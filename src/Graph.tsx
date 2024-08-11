@@ -67,13 +67,21 @@ class Graph extends Component<IProps, {}> {
                 acc.stock.push(el.stock);
                 acc.top_ask_price.push(el.top_ask && el.top_ask.price ? el.top_ask.price : 0);
                 acc.top_bid_price.push(el.top_bid && el.top_bid.price ? el.top_bid.price : 0);
-                acc.timestamp.push(new Date(el.timestamp)); // Ensure the timestamp is a Date object
+                
+                // Format the timestamp as dd/mm/yyyy
+                const date = new Date(el.timestamp);
+                const day = date.getDate().toString().padStart(2, '0');
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                const year = date.getFullYear();
+                const formattedDate = `${day}/${month}/${year}`;
+                
+                acc.timestamp.push(formattedDate); // Push the formatted date string
                 return acc;
             }, {
                 stock: [] as string[],
                 top_ask_price: [] as number[],
                 top_bid_price: [] as number[],
-                timestamp: [] as Date[],
+                timestamp: [] as string[], // Use string for formatted date
             });
 
             // Update the Perspective table with new data
