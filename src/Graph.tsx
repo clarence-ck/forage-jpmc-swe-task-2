@@ -65,8 +65,8 @@ class Graph extends Component<IProps, {}> {
             // Convert data to Perspective's expected format
             const dataToUpdate = this.props.data.reduce((acc, el: any) => {
                 acc.stock.push(el.stock);
-                acc.top_ask_price.push(el.top_ask?.price || 0);
-                acc.top_bid_price.push(el.top_bid?.price || 0);
+                acc.top_ask_price.push(el.top_ask && el.top_ask.price ? el.top_ask.price : 0);
+                acc.top_bid_price.push(el.top_bid && el.top_bid.price ? el.top_bid.price : 0);
                 acc.timestamp.push(new Date(el.timestamp)); // Ensure the timestamp is a Date object
                 return acc;
             }, {
