@@ -56,9 +56,6 @@ class Graph extends Component<IProps, {}> {
             elem.setAttribute("aggregates",
                 '{"stock":"distinct_count", "top_ask_price":"avg", "top_bid_price":"avg", "timestamp":"distinct_count"}'
             );
-
-            // Additional configuration to make the x-axis more readable
-            elem.setAttribute("x-axis-format", "DD/MM/YYYY");
         }
     }
 
